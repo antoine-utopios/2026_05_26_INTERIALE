@@ -1,32 +1,32 @@
 services:
-  - container_name: ubuntu-client
-    image: ubuntu
-    env:
-      VARIABLE_A: "Valeur A"
-      VARIABLE_B: "Valeur B"
-    ports:
-      - "1234:1234"
-    volumeMounts:
-      name: nom-volume
-      path: /emplacement/dans/conteneur
-  - container_name: conteneur-solitaire
-    image: ubuntu
-    network:
-      name: a-part
-  - container_name: mysql-server
+  mysql-server:
+    container_name: mysql-server
     image: mysql
-    env:
+    environment:
       MYSQL_ROOT_PASSWORD: "password"
     ports:
       - "3306:3306"
-    volumeMounts:
-      name: mysql-data
-      path: /var/lib/mysql
+    volumes:
+      - type: volume
+        source: mysql-data
+        target: /var/lib/mysql
+    restart: on-failure
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+  react-app:
+    container_name: react-app
+    image: demo-react:full
+    depends_on:
+      mysql-server:
+        condition: service_healthy
+    ports:
+      - "8080:80"
 volumes:
-  nom-volume: {}
   mysql-data: {}
-networks: 
-  a-part: {}
 
 # Pour lancer l'ensemble des services => docker compose up
 # Pour retirer l'ensemble des services => docker compose down

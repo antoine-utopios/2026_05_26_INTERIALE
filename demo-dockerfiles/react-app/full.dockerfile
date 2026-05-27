@@ -28,3 +28,4 @@ EXPOSE 80
 
 # Pour choisir la commande de lancement de notre conteneur une fois "docker run..."
 CMD ["nginx", "-g", "daemon off;"]
+

@@ -1,0 +1,32 @@
+services:
+  - container_name: ubuntu-client
+    image: ubuntu
+    env:
+      VARIABLE_A: "Valeur A"
+      VARIABLE_B: "Valeur B"
+    ports:
+      - "1234:1234"
+    volumeMounts:
+      name: nom-volume
+      path: /emplacement/dans/conteneur
+  - container_name: conteneur-solitaire
+    image: ubuntu
+    network:
+      name: a-part
+  - container_name: mysql-server
+    image: mysql
+    env:
+      MYSQL_ROOT_PASSWORD: "password"
+    ports:
+      - "3306:3306"
+    volumeMounts:
+      name: mysql-data
+      path: /var/lib/mysql
+volumes:
+  nom-volume: {}
+  mysql-data: {}
+networks: 
+  a-part: {}
+
+# Pour lancer l'ensemble des services => docker compose up
+# Pour retirer l'ensemble des services => docker compose down

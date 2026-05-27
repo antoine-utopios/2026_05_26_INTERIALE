@@ -1,0 +1,29 @@
+cle-texte: "Du texte"
+cle-nombre: 123456
+cle-booleen: true
+
+cle-tableau-vide: []
+
+cle-tableau: [123, "toto", false]
+
+cle-tableau-indentation:
+  - 123
+  - "toto"
+  - false
+
+cle-object-vide: {}
+
+cle-object: {prop-a: 123, prop-b: "Je suis du texte", prop-c: true}
+
+cle-object-indentation: 
+  prop-a: 123
+  prop-b: "Je suis du texte"
+  prop-c: true
+
+tableau-chaises:
+  - materiaux: "Bois"
+    nombre-pieds: 4
+    couleur: "Vert"
+  - materiaux: "Métal"
+    nombre-pieds: 6
+    couleur: "Rouge"

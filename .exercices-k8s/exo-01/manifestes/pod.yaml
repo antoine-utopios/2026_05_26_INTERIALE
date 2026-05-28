@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: exo-01
+  labels:
+    name: exo-01
+spec:
+  containers:
+  - name: exo-01
+    image: nginx:alpine
+    ports:
+      - containerPort: 80

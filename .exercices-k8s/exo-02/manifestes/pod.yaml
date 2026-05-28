@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: exo-02
+  labels:
+    name: exo-02
+spec:
+  containers:
+  - name: exo-02
+    image: quchaonet/2048
+    ports:
+      - containerPort: 8080

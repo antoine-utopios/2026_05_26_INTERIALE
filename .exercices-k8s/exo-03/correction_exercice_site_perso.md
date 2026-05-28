@@ -13,12 +13,12 @@ docker build -t exercice-03 .
 * Héberger notre image dans un registre d'image de conteneur public
 
 ```bash
-docker tag exercice-03 username/exercice-03
+docker tag exercice-03 username/exercice-03:v1
 
 # On va répéter le token de connexion à Dockerhub dans le terminal via la commande echo, qui va être envoyée en entrée standard de la commande suivante via le mécanisme du piping et le drapeau --password-stdin
 echo $DOCKER_TOKEN | docker login -u username --password-stdin
 
-docker push username/exercice-03
+docker push username/exercice-03:v1
 ```
 
 * Créer un cluster
@@ -32,21 +32,27 @@ minikube start --driver=Docker
 * Déployer un pod de l'application via son image publique
 
 ```bash
-minikube image load username/exercice-03
+minikube image load username/exercice-03:v1
 
-kubectl run exo-03 --image=username/exercice-03 --image-pull-policy=Never
+kubectl create deployment exo-03 --image=username/exercice-03:v1
 # ou
-kubectl run exo-03 --image=username/exercice-03 --image-pull-policy=IfNotPresent
+kubectl create deploy exo-03 --image=username/exercice-03:v1
 ```
 
 * Créer un service Kubernetes permettant d'exposer le pod au sein du cluster
 
 ```bash
-kubectl expose pod/exo-03 --port=8080 --type=LoadBalancer
+kubectl expose deploy/exo-03 --port=8080 --type=LoadBalancer
 ```
 
 * Créer un tunnel via minikube permettant d'accéder à notre service depuis l'ordinateur hôte
 
 ```bash
 minikube service exo-03
+```
+
+* Scaler notre applicatif en une version disposant de 3 réplicats
+
+```bash
+kubectl scale deploy/exo-03 --replicas=3
 ```

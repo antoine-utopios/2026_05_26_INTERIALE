@@ -18,6 +18,13 @@ spec:
         tier: frontend
         app: nginx
     spec:
+      tolerations:
+        - key: "country"
+          operator: "Equal"
+          value: "france"
+        - key: "country"
+          operator: "Equal"
+          value: "japan"
       containers:
       - name: demo-container
         image: nginx:alpine

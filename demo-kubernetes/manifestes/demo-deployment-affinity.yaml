@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: demo-deployment
+  name: demo-deployment-affinity
   labels:
     tier: frontend
     app: nginx
 spec:
-  replicas: 9
+  replicas: 5
   selector:
     matchLabels:
       tier: frontend
@@ -18,6 +18,14 @@ spec:
         tier: frontend
         app: nginx
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: "country"
+                    operator: "In"
+                    values: ["france"]
       containers:
       - name: demo-container
         image: nginx:alpine

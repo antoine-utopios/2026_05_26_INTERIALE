@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: exo-07-api-deployment
+spec:
+  selector:
+    matchLabels:
+      app: exo-07-api
+  template:
+    metadata:
+      name: exo-07-api-pod
+      labels:
+        app: exo-07-api
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: "country"
+                    operator: "In"
+                    values: ["japan"]
+      tolerations:
+        - key: "country"
+          value: "japan"
+          operator: "Equal"
+      containers:
+      - name: exo-07-api-container
+        image: username/api
+        ports:
+        - containerPort: 3000

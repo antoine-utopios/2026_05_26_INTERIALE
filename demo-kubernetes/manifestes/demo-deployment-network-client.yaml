@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-deployment
+  labels:
+    app: sleepy-client
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sleepy-client
+  template:
+    metadata:
+      name: demo-pod
+      labels:
+        app: sleepy-client
+    spec:
+      containers:
+      - name: demo-container
+        image: username/ubuntu-client
+        env:
+          - name: "HOST_URL_SERVER"
+            value: "demo-service-network-server"
+        ports:
+          - containerPort: 80

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-deployment
+  labels:
+    app: sleepy-server
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sleepy-server
+  template:
+    metadata:
+      name: demo-pod
+      labels:
+        app: sleepy-server
+    spec:
+      containers:
+      - name: demo-container
+        image: username/ubuntu-sleep
+        ports:
+          - containerPort: 80

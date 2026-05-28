@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: exo-04
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: exo-04
+  template:
+    metadata:
+      name: exo-04
+      labels:
+        name: exo-04
+    spec:
+      containers:
+      - name: exo-04
+        image: username/mon-api:v1
+        ports:
+          - containerPort: 3000
+

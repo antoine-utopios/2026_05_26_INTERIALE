@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: exo-03
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: exo-03
+  template:
+    metadata:
+      name: exo-03
+      labels:
+        name: exo-03
+    spec:
+      containers:
+      - name: exo-03
+        image: username/site-perso
+        ports:
+          - containerPort: 80
+

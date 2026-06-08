@@ -49,6 +49,7 @@ git reset --hard <id-commit> # Transforme le WD de sorte à ce qu'il corresponde
 git branch "nouvelle/branche"
 ```
 
+
 * Supprimer des branches
 
 ```bash

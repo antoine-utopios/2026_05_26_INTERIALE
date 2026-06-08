@@ -68,3 +68,27 @@ git switch nom/branche
 git checkout -b nouvelle/branche
 git switch -c nouvelle/branche
 ```
+
+* Récupérer des changements d'une autre branche (via merge et création d'un commit de merge)
+
+```bash
+git switch branche-voulant-changements
+
+git merge branche-contenant-changements --no-ff
+```
+
+* Récupérer des changements d'une autre branche (via merge et sans création d'un commit de merge)
+
+```bash
+git switch branche-voulant-changements
+
+git merge branche-contenant-changements --ff-only
+```
+
+* Récupérer des changements d'une autre branche (via rebase)
+
+```bash
+git switch branche-voulant-changements
+
+git rebase branche-contenant-changements
+```

@@ -92,3 +92,28 @@ git switch branche-voulant-changements
 
 git rebase branche-contenant-changements
 ```
+
+* Cloner un dépot distant en local 
+
+```bash
+git clone <url-distant> [nom-dossier-local]
+```
+
+* Ajouter un lien vers un dépot distant dans un git déjà existant 
+
+```bash
+git remote add <nom-remote> <url>
+```
+
+* Pousser le contenu d'une branche locale en ligne
+
+```bash
+git push <remote> <branche>
+
+git push -u <remote> <branche> # Ajoute le tracking
+git push # Si branche actuelle déjà traquée et un seul remote
+```
+
+---
+
+Pour pratiquer : [Git branch Learning](https://learngitbranching.js.org/)

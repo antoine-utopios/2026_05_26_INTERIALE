@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-deployment
+  labels:
+    tier: frontend
+    app: {{ .Release.Name }}
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: frontend
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      name: {{ .Release.Name }}-pod
+      labels:
+        tier: frontend
+        app: {{ .Release.Name }}
+    spec:
+      containers:
+      - name: {{ .Release.Name }}-container
+        image: nginx:{{ .Values.nginxVersion }}
+        ports:
+          - containerPort: 80

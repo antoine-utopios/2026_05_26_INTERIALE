@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-service
+spec:
+# Ceci est un commentaire YAML
+{{- /* Ceci est un commentaire de template */ -}}
+{{- /* Ceci est un commentaire de template */ -}}
+{{- if eq .Values.serviceType "loadBalancer" }}
+  type: LoadBalancer
+{{- else }}
+  type: ClusterIP
+{{- end }}
+  selector:
+    tier: frontend
+    app: {{ .Release.Name }}
+  ports:
+  - port: 80
+    targetPort: 80

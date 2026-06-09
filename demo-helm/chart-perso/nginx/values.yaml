@@ -1,0 +1,10 @@
+nginxVersion: "1.31.1"
+withService: true
+envVariablesListing:
+  - "element1"
+  - "element2"
+  - "element3"
+envVariablesMapping:
+  keyA: "element1"
+  keyB: "element2"
+  keyC: "element3"

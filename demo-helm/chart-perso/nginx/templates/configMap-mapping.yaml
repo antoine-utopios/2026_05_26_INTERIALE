@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap-mapping
+data: 
+# {{ .Values.envVariablesMapping }}
+{{- range $key, $val := .Values.envVariablesMapping }}
+    {{ $key }}: {{ $val }}
+{{- end }}

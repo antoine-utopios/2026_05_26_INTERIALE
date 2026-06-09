@@ -13,4 +13,14 @@ En utilisant un cluster de type `minikube` ainsi que les commandes `helm`, réal
     * Pour l'interface administrateur
     * Pour la base de données MariaDB
 
+```bash
+helm install exo-01-release bitnami/wordpress \
+    --version 32.0.1 \
+    --namespace exo-01 \
+    --create-namespace \
+    --set wordpressPassword=password \
+    --set mariadb.auth.rootPassword=rootpassword \
+    --set mariadb.auth.password=password
+```
+
 Vérifier ensuite le déploiement via un accès en ligne à `https://localhost:8080`

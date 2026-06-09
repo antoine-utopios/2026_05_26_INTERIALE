@@ -1,25 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-deployment
+  name: {{ include "app-name" . }}-deployment
   labels:
-    tier: frontend
-    app: {{ .Release.Name }}
+    {{- include "common-labels" . | nindent 4 }}
 spec:
   replicas: 3
   selector:
     matchLabels:
-      tier: frontend
-      app: {{ .Release.Name }}
+      {{- include "common-labels" . | nindent 6 }}
   template:
     metadata:
-      name: {{ .Release.Name }}-pod
+      name: {{ include "app-name" . }}-pod
       labels:
-        tier: frontend
-        app: {{ .Release.Name }}
+        {{- include "common-labels" . | nindent 8 }}
     spec:
       containers:
-      - name: {{ .Release.Name }}-container
+      - name: {{ include "app-name" . }}-container
         image: nginx:{{ .Values.nginxVersion }}
         ports:
           - containerPort: 80

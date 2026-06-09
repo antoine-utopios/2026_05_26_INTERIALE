@@ -8,3 +8,4 @@ envVariablesMapping:
   keyA: "element1"
   keyB: "element2"
   keyC: "element3"
+appTier: frontend

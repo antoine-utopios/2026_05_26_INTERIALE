@@ -12,8 +12,7 @@ spec:
   type: ClusterIP
 {{- end }}
   selector:
-    tier: frontend
-    app: {{ .Release.Name }}
+    {{- include "common-labels" . | nindent 4 }}
   ports:
   - port: 80
     targetPort: 80

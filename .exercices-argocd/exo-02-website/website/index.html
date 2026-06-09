@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Accueil — Mon Site</title>
+	<meta name="description" content="Page d'accueil simple et moderne en HTML">
+	<style>
+		:root{--accent:#2b6cb0;--muted:#6b7280}
+		body{font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial; margin:0;color:#111;background:#f7fafc}
+		header{background:white;border-bottom:1px solid #e6edf3}
+		.container{max-width:1000px;margin:0 auto;padding:24px}
+		nav{display:flex;align-items:center;justify-content:space-between}
+		.brand{font-weight:700;color:var(--accent)}
+		.nav-links a{margin-left:18px;color:var(--muted);text-decoration:none}
+		.hero{display:flex;gap:32px;align-items:center;padding:48px 0}
+		.hero h1{margin:0;font-size:2.2rem}
+		.hero p{color:var(--muted);margin-top:8px}
+		.btn{display:inline-block;background:var(--accent);color:white;padding:10px 16px;border-radius:8px;text-decoration:none}
+		.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:24px}
+		.card{background:white;padding:18px;border-radius:10px;box-shadow:0 1px 3px rgba(12,20,30,0.06)}
+		footer{padding:28px 0;color:var(--muted);text-align:center}
+	</style>
+</head>
+<body>
+	<header>
+		<div class="container">
+			<nav>
+				<div class="brand">MonSite</div>
+				<div class="nav-links">
+					<a href="#">Accueil</a>
+					<a href="./about.html">À propos</a>
+				</div>
+			</nav>
+		</div>
+	</header>
+
+	<main class="container">
+		<section class="hero">
+			<div style="flex:1">
+				<h1>Bienvenue sur MonSite</h1>
+				<p>Une page d'accueil claire et moderne — prête à être personnalisée pour votre projet.</p>
+				<p style="margin-top:16px"><a class="btn" href="./about.html">En savoir plus</a></p>
+			</div>
+			<div style="width:320px">
+				<div style="background:linear-gradient(135deg,#e6f0ff,#ffffff);border-radius:12px;padding:20px;text-align:center">
+					<strong>Visuel</strong>
+					<div style="height:160px;margin-top:12px;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;color:var(--muted);border:1px dashed #dbeafe">Illustration</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="about">
+			<h2>Fonctionnalités</h2>
+			<div class="features">
+				<div class="card">
+					<h3>Design responsif</h3>
+					<p style="color:var(--muted)">S'adapte à tous les écrans — mobile, tablette et desktop.</p>
+				</div>
+				<div class="card">
+					<h3>Facile à personnaliser</h3>
+					<p style="color:var(--muted)">Structure simple et CSS clair pour démarrer rapidement.</p>
+				</div>
+				<div class="card">
+					<h3>Optimisé</h3>
+					<p style="color:var(--muted)">Code léger et sémantique pour de bonnes performances.</p>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer>
+		<div class="container">
+			<small>© 2026 MonSite — Tous droits réservés</small>
+		</div>
+	</footer>
+</body>
+</html>

@@ -12,7 +12,7 @@ En utilisant un cluster de type `minikube` ainsi que les commandes `helm`, réal
 * Le déploiement doit posséder un mot de passe personnalisé
     * Le mot de passe doit provenir d'un secret présent en amont dans le cluster
 
- `mysql-root-password`, `mysql-replication-password` and `mysql-passwor
+ `mysql-root-password`, `mysql-replication-password` and `mysql-password'
 
 ```bash
 kubectl create ns exo-02

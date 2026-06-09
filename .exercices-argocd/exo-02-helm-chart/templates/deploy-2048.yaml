@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: exo-07-2048-deployment
+spec:
+  replicas: {{ .Values.replicas.game2048 }}
+  selector:
+    matchLabels:
+      app: exo-07-2048
+  template:
+    metadata:
+      name: exo-07-2048-pod
+      labels:
+        app: exo-07-2048
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: "country"
+                    operator: "In"
+                    values: [{{ .Values.deployLocation.game2048 }}]
+      tolerations:
+        - key: "country"
+          value: {{ .Values.deployLocation.game2048 }}
+          operator: "Equal"
+      containers:
+      - name: exo-07-2048-container
+        image: quchaonet/2048
+        ports:
+        - containerPort: 8080

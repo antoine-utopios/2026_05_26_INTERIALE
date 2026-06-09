@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: exo-01-deployment
+  labels:
+    tier: frontend
+    app: react-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: frontend
+      app: react-app
+  template:
+    metadata:
+      name: exo-01-pod
+      labels:
+        tier: frontend
+        app: react-app
+    spec:
+      containers:
+      - name: exo-01-container
+        image: username/react-app:v1
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+        livenessProbe:          
+          httpGet:
+            path: /
+            port: 80
+        resources:
+          limits:
+            memory: "1000Mi"
+            cpu: "500m"
+          requests:
+            memory: "250Mi"
+            cpu: "100m"
+        ports:
+          - containerPort: 80

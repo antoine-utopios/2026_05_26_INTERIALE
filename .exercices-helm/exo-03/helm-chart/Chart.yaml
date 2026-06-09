@@ -1,0 +1,4 @@
+apiVersion: v2
+name: exo-03
+version: 0.1.0
+description: Helm Chart for the exercice 03

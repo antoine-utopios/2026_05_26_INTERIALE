@@ -13,8 +13,11 @@ Créer un dépot Git synchronisé avec une `Application` ArgoCD qui contiendra l
 
 Le déploiement au sein du cluster K8s devra:
     * Suivre les évolutions des fichiers dans le dépot Git de façon automatisée
+        `Ajouter l'AutoSync`
     * Ne pas être sensible aux changements externes
+        `Ajouter l'AutoHealth`
     * Supprimer les ressources orphelines automatisquement
+        `Ajouter l'AutoPrune`
 
 La chart devra permettre de choisir:
     * L'emplacement de déploiement de chacun des applicatifs

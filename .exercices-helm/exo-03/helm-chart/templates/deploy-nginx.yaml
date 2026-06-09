@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: exo-07-nginx-deployment
+spec:
+  replicas: {{ .Values.replicas.nginx }}
+  selector:
+    matchLabels:
+      app: exo-07-nginx
+  template:
+    metadata:
+      name: exo-07-nginx-pod
+      labels:
+        app: exo-07-nginx
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: "country"
+                    operator: "In"
+                    values: [{{ .Values.deployLocation.nginx }}]
+      tolerations:
+        - key: "country"
+          value: {{ .Values.deployLocation.nginx }}
+          operator: "Equal"
+      containers:
+      - name: exo-07-nginx-container
+        image: nginx:{{ .Values.nginxVersion }}
+        ports:
+        - containerPort: 80
